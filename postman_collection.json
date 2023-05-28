@@ -1,0 +1,1474 @@
+{
+	"info": {
+		"_postman_id": "5a8cecd5-76a6-43d4-aa15-2232085c73d6",
+		"name": "SIT331-T1-2023 6.1C Automatic Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21312712"
+	},
+	"item": [
+		{
+			"name": "get all commands",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains array of robot commands\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each command in the commands contains valid properties\", function () {\r",
+							"    var robotCommands = pm.response.json();\r",
+							"    for (const command of robotCommands) {\r",
+							"        pm.expect(command).to.have.property('id');\r",
+							"        pm.expect(command).to.have.property('name');\r",
+							"        pm.expect(command).to.have.property('description');\r",
+							"        pm.expect(command).to.have.property('isMoveCommand');\r",
+							"        pm.expect(command).to.have.property('createdDate');\r",
+							"        pm.expect(command).to.have.property('modifiedDate');\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/robot-commands",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"robot-commands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get move commands",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains array of robot commands\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each command in the commands contains valid properties\", function () {\r",
+							"    var robotCommands = pm.response.json();\r",
+							"    for (const command of robotCommands) {\r",
+							"        pm.expect(command).to.have.property('id');\r",
+							"        pm.expect(command).to.have.property('name');\r",
+							"        pm.expect(command).to.have.property('description');\r",
+							"        pm.expect(command).to.have.property('isMoveCommand');\r",
+							"        pm.expect(command).to.have.property('createdDate');\r",
+							"        pm.expect(command).to.have.property('modifiedDate');\r",
+							"        pm.expect(command.isMoveCommand).to.be.true;\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each command in the commands is a move command\", function () {\r",
+							"    var robotCommands = pm.response.json();\r",
+							"    for (const command of robotCommands) {\r",
+							"        pm.expect(command.isMoveCommand).to.be.true;\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/robot-commands/move",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"robot-commands",
+						"move"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get command by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains a robot command\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The command contains valid properties\", function () {\r",
+							"    var command = pm.response.json();\r",
+							"    pm.expect(command).to.have.property('id');\r",
+							"    pm.expect(command).to.have.property('name');\r",
+							"    pm.expect(command).to.have.property('description');\r",
+							"    pm.expect(command).to.have.property('isMoveCommand');\r",
+							"    pm.expect(command).to.have.property('createdDate');\r",
+							"    pm.expect(command).to.have.property('modifiedDate');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The id of the command is the same as the one requested\", function () {\r",
+							"    var command = pm.response.json();\r",
+							"    pm.expect(command.id).to.be.equal(parseInt(pm.variables.get('getMoveByid')));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/robot-commands/{{getMoveByid}}",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"robot-commands",
+						"{{getMoveByid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add new command",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains a robot command\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response command contains all necessary fields\", function () {\r",
+							"    var command = pm.response.json();\r",
+							"    pm.expect(command).to.have.property('id');\r",
+							"    pm.expect(command).to.have.property('name');\r",
+							"    pm.expect(command).to.have.property('description');\r",
+							"    pm.expect(command).to.have.property('isMoveCommand');\r",
+							"    pm.expect(command).to.have.property('createdDate');\r",
+							"    pm.expect(command).to.have.property('modifiedDate');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The new command contains the correct information\", function () {\r",
+							"    var command = pm.response.json();\r",
+							"    pm.expect(command.name).to.be.equal(pm.variables.get('newCommandName'));\r",
+							"    pm.expect(command.description).to.be.equal(pm.variables.get('newCommandDesc'));\r",
+							"    pm.expect(JSON.stringify(command.isMoveCommand)).to.be.equal((pm.variables.get('newCommandMove')));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check a newly created resource URL to be in the Location HTTP header\", function () {\r",
+							"    pm.response.to.have.header(\"Location\")\r",
+							"    var command = pm.response.json();\r",
+							"    var newResourceUrl = 'https://' + pm.variables.get('api-host') + ':' + pm.variables.get('port') + '/api/robot-commands/' + command.id\r",
+							"    pm.expect(pm.response.headers.get('Location')).to.eql(newResourceUrl)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"{{newCommandName}}\",\r\n \"isMoveCommand\": {{newCommandMove}},\r\n \"description\": \"{{newCommandDesc}}\"\r\n }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/robot-commands",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"robot-commands"
+					],
+					"query": [
+						{
+							"key": "command",
+							"value": "Flip",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update command by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"isMoveCommand\": false,\r\n \"name\": \"BLINK\",\r\n \"description\": \"modified by postman\"\r\n }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/robot-commands/34",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"robot-commands",
+						"34"
+					],
+					"query": [
+						{
+							"key": "command",
+							"value": "Cartwheel",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete command",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is empty\"), function () {\r",
+							"    pm.response.to.be.null;\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/robot-commands/45",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"robot-commands",
+						"45"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all maps",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains array of maps\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each map in the maps contains valid properties\", function () {\r",
+							"    var maps = pm.response.json();\r",
+							"    for (const map of maps) {\r",
+							"        pm.expect(map).to.have.property('id');\r",
+							"        pm.expect(map).to.have.property('columns');\r",
+							"        pm.expect(map).to.have.property('rows');\r",
+							"        pm.expect(map).to.have.property('name');\r",
+							"        pm.expect(map).to.have.property('description');\r",
+							"        pm.expect(map).to.have.property('createdDate');\r",
+							"        pm.expect(map).to.have.property('modifiedDate');\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/maps",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"maps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get square maps",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains array of maps\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each map in the maps contains valid properties\", function () {\r",
+							"    var maps = pm.response.json();\r",
+							"    for (const map of maps) {\r",
+							"        pm.expect(map).to.have.property('id');\r",
+							"        pm.expect(map).to.have.property('columns');\r",
+							"        pm.expect(map).to.have.property('rows');\r",
+							"        pm.expect(map).to.have.property('name');\r",
+							"        pm.expect(map).to.have.property('description');\r",
+							"        pm.expect(map).to.have.property('createdDate');\r",
+							"        pm.expect(map).to.have.property('modifiedDate');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each map in the maps are square\", function () {\r",
+							"    var maps = pm.response.json();\r",
+							"    for (const map of maps) {\r",
+							"        pm.expect(map.columns).to.be.equal(map.columns);\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/maps/square",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"maps",
+						"square"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get map by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains array of maps\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each map in the maps contains valid properties\", function () {\r",
+							"    var map = pm.response.json();\r",
+							"    pm.expect(map).to.have.property('id');\r",
+							"    pm.expect(map).to.have.property('columns');\r",
+							"    pm.expect(map).to.have.property('rows');\r",
+							"    pm.expect(map).to.have.property('name');\r",
+							"    pm.expect(map).to.have.property('description');\r",
+							"    pm.expect(map).to.have.property('createdDate');\r",
+							"    pm.expect(map).to.have.property('modifiedDate');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The id of the map is the same as the one requested\", function () {\r",
+							"    var map = pm.response.json();\r",
+							"    pm.expect(map.id).to.be.equal(parseInt(pm.variables.get('getMapById')));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/maps/{{getMapById}}",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"maps",
+						"{{getMapById}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "are coordinates on map by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Is (3,4) on the given map\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/maps/2/3-4",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"maps",
+						"2",
+						"3-4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add new map",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains array of maps\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response map contains all necessary fields\", function () {\r",
+							"    var map = pm.response.json();\r",
+							"    pm.expect(map).to.have.property('id');\r",
+							"    pm.expect(map).to.have.property('columns');\r",
+							"    pm.expect(map).to.have.property('rows');\r",
+							"    pm.expect(map).to.have.property('name');\r",
+							"    pm.expect(map).to.have.property('description');\r",
+							"    pm.expect(map).to.have.property('createdDate');\r",
+							"    pm.expect(map).to.have.property('modifiedDate');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The new map contains the correct information\", function () {\r",
+							"    var map = pm.response.json();\r",
+							"    pm.expect(map.columns).to.be.equal(parseInt(pm.variables.get('newMapColumns')));\r",
+							"    pm.expect(map.rows).to.be.equal(parseInt(pm.variables.get('newMapRows')));\r",
+							"    pm.expect(map.name).to.be.equal(pm.variables.get('newMapName'));\r",
+							"    pm.expect(map.description).to.be.equal(pm.variables.get('newMapDesc'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check a newly created resource URL to be in the Location HTTP header\", function () {\r",
+							"    pm.response.to.have.header(\"Location\")\r",
+							"    var map = pm.response.json();\r",
+							"    var newResourceUrl = 'https://' + pm.variables.get('api-host') + ':' + pm.variables.get('port') + '/api/maps/' + map.id\r",
+							"    pm.expect(pm.response.headers.get('Location')).to.eql(newResourceUrl)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"{{newMapName}}\",\r\n    \"Rows\": {{newMapRows}},\r\n    \"Columns\": {{newMapColumns}},\r\n    \"Description\": \"{{newMapDesc}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/maps",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"maps"
+					],
+					"query": [
+						{
+							"key": "x",
+							"value": "75",
+							"disabled": true
+						},
+						{
+							"key": "y",
+							"value": "75",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update map by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"modifiedByPostman\",\r\n    \"Rows\": 100,\r\n    \"Columns\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/maps/6",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"maps",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete map",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is empty\"), function () {\r",
+							"    pm.response.to.be.null;\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/maps/21",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"maps",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains array of users\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each user in users contains valid properties\", function () {\r",
+							"    var users = pm.response.json();\r",
+							"    for (const user of users) {\r",
+							"        pm.expect(user).to.have.property('id');\r",
+							"        pm.expect(user).to.have.property('email');\r",
+							"        pm.expect(user).to.have.property('firstName');\r",
+							"        pm.expect(user).to.have.property('lastName');\r",
+							"        pm.expect(user).to.have.property('passwordHash');\r",
+							"        pm.expect(user).to.have.property('description');\r",
+							"        pm.expect(user).to.have.property('role');\r",
+							"        pm.expect(user).to.have.property('createdDate');\r",
+							"        pm.expect(user).to.have.property('modifiedDate');\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/users",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all admins",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains array of users\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each user in users contains valid properties\", function () {\r",
+							"    var users = pm.response.json();\r",
+							"    for (const user of users) {\r",
+							"        pm.expect(user).to.have.property('id');\r",
+							"        pm.expect(user).to.have.property('email');\r",
+							"        pm.expect(user).to.have.property('firstName');\r",
+							"        pm.expect(user).to.have.property('lastName');\r",
+							"        pm.expect(user).to.have.property('passwordHash');\r",
+							"        pm.expect(user).to.have.property('description');\r",
+							"        pm.expect(user).to.have.property('role');\r",
+							"        pm.expect(user).to.have.property('createdDate');\r",
+							"        pm.expect(user).to.have.property('modifiedDate');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each user in users is an admin\", function () {\r",
+							"    var users = pm.response.json();\r",
+							"    for (const user of users) {\r",
+							"        pm.expect(user.role).to.be.equal(\"admin\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/users/admin",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"users",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains array of users\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Each user in users contains valid properties\", function () {\r",
+							"    var user = pm.response.json();\r",
+							"    pm.expect(user).to.have.property('id');\r",
+							"    pm.expect(user).to.have.property('email');\r",
+							"    pm.expect(user).to.have.property('firstName');\r",
+							"    pm.expect(user).to.have.property('lastName');\r",
+							"    pm.expect(user).to.have.property('passwordHash');\r",
+							"    pm.expect(user).to.have.property('description');\r",
+							"    pm.expect(user).to.have.property('role');\r",
+							"    pm.expect(user).to.have.property('createdDate');\r",
+							"    pm.expect(user).to.have.property('modifiedDate');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The id of the user is the same as the one requested\", function () {\r",
+							"    var users = pm.response.json();\r",
+							"    pm.expect(users.id).to.be.equal(parseInt(pm.variables.get('getUserById')));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/users/{{getUserById}}",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"users",
+						"{{getUserById}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add new user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"\r",
+							"    pm.response.to.not.be.null;\r",
+							"    pm.response.to.not.be.undefined;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains array of maps\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response user contains all necessary fields\", function () {\r",
+							"    var user = pm.response.json();\r",
+							"    pm.expect(user).to.have.property('id');\r",
+							"    pm.expect(user).to.have.property('email');\r",
+							"    pm.expect(user).to.have.property('firstName');\r",
+							"    pm.expect(user).to.have.property('lastName');\r",
+							"    pm.expect(user).to.have.property('passwordHash');\r",
+							"    pm.expect(user).to.have.property('description');\r",
+							"    pm.expect(user).to.have.property('role');\r",
+							"    pm.expect(user).to.have.property('createdDate');\r",
+							"    pm.expect(user).to.have.property('modifiedDate');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The new user contains the correct information\", function () {\r",
+							"    var user = pm.response.json();\r",
+							"    pm.expect(user.email).to.be.equal(pm.variables.get('newUserEmail'));\r",
+							"    pm.expect(user.firstName).to.be.equal(pm.variables.get('newUserFName'));\r",
+							"    pm.expect(user.lastName).to.be.equal(pm.variables.get('newUserLName'));\r",
+							"    pm.expect(user.passwordHash).to.not.be.equal(pm.variables.get('newUserPWHash'));\r",
+							"    pm.expect(user.description).to.be.equal(pm.variables.get('newUserDesc'));\r",
+							"    pm.expect(user.role).to.be.equal(pm.variables.get('newUserRole'));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check a newly created resource URL to be in the Location HTTP header\", function () {\r",
+							"    pm.response.to.have.header(\"Location\")\r",
+							"    var user = pm.response.json();\r",
+							"    var newResourceUrl = 'https://' + pm.variables.get('api-host') + ':' + pm.variables.get('port') + '/api/users/' + user.id\r",
+							"    pm.expect(pm.response.headers.get('Location')).to.eql(newResourceUrl)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{newUserEmail}}\",\r\n    \"firstname\": \"{{newUserFName}}\",\r\n    \"lastname\": \"{{newUserLName}}\",\r\n    \"passwordhash\": \"{{newUserPWHash}}\",\r\n    \"description\": \"{{newUserDesc}}\",\r\n    \"role\": \"{{newUserRole}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/users",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"\",\r\n    \"passwordhash\": \"\",\r\n    \"firstname\": \"mail\",\r\n    \"lastname\": \"man\",\r\n    \"description\": \"edited by postman\",\r\n    \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/users/15",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"users",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is empty\"), function () {\r",
+							"    pm.response.to.be.null;\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/users/21",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"users",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"modifiedby@mailman.com\", \r\n    \"password\": \"mailman123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{api-host}}:{{port}}/api/users/15",
+					"protocol": "https",
+					"host": [
+						"{{api-host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"users",
+						"15"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "21"
+		}
+	]
+}

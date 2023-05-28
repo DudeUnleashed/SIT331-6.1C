@@ -1,0 +1,948 @@
+{
+	"id": "b30f5460-507c-430b-b08d-2e83ca7232ce",
+	"name": "SIT331-T1-2023 6.1C Automatic Testing",
+	"timestamp": "2023-05-28T05:55:26.551Z",
+	"collection_id": "21312712-5a8cecd5-76a6-43d4-aa15-2232085c73d6",
+	"folder_id": 0,
+	"environment_id": "21312712-dac9916a-5d65-4d09-8389-e5f253fe180f",
+	"totalPass": 71,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-05-28T05:55:21.900Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "7dd92bb3-e556-4566-8daf-1a7c9af1b812",
+			"name": "get all commands",
+			"url": "https://localhost:7166/api/robot-commands",
+			"time": 145,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is not empty": true,
+				"Response body contains array of robot commands": true,
+				"Each command in the commands contains valid properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains array of robot commands": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each command in the commands contains valid properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				145
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is not empty": true,
+					"Response body contains array of robot commands": true,
+					"Each command in the commands contains valid properties": true
+				}
+			]
+		},
+		{
+			"id": "f63fb77f-9fb9-4d62-848a-3bc911d81b39",
+			"name": "get move commands",
+			"url": "https://localhost:7166/api/robot-commands/move",
+			"time": 141,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is not empty": true,
+				"Response body contains array of robot commands": true,
+				"Each command in the commands contains valid properties": true,
+				"Each command in the commands is a move command": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains array of robot commands": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each command in the commands contains valid properties": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each command in the commands is a move command": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				141
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is not empty": true,
+					"Response body contains array of robot commands": true,
+					"Each command in the commands contains valid properties": true,
+					"Each command in the commands is a move command": true
+				}
+			]
+		},
+		{
+			"id": "9576233e-7175-48b9-9254-52135abb9a8e",
+			"name": "get command by id",
+			"url": "https://localhost:7166/api/robot-commands/21",
+			"time": 133,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is not empty": true,
+				"Response body contains a robot command": true,
+				"The command contains valid properties": true,
+				"The id of the command is the same as the one requested": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains a robot command": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The command contains valid properties": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The id of the command is the same as the one requested": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				133
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is not empty": true,
+					"Response body contains a robot command": true,
+					"The command contains valid properties": true,
+					"The id of the command is the same as the one requested": true
+				}
+			]
+		},
+		{
+			"id": "42ac01cb-b47a-44f2-ba33-460ec9e0ff1f",
+			"name": "add new command",
+			"url": "https://localhost:7166/api/robot-commands",
+			"time": 126,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response body is not empty": true,
+				"Response body contains a robot command": true,
+				"Response command contains all necessary fields": true,
+				"The new command contains the correct information": true,
+				"Check a newly created resource URL to be in the Location HTTP header": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains a robot command": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response command contains all necessary fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The new command contains the correct information": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check a newly created resource URL to be in the Location HTTP header": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				126
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response body is not empty": true,
+					"Response body contains a robot command": true,
+					"Response command contains all necessary fields": true,
+					"The new command contains the correct information": true,
+					"Check a newly created resource URL to be in the Location HTTP header": true
+				}
+			]
+		},
+		{
+			"id": "ae740656-8fcd-4f29-b7f4-437ae0a056c1",
+			"name": "update command by id",
+			"url": "https://localhost:7166/api/robot-commands/34",
+			"time": 137,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				137
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "9e0aba41-9fb3-4543-8bbb-679d6cb047e7",
+			"name": "delete command",
+			"url": "https://localhost:7166/api/robot-commands/45",
+			"time": 134,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is empty": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is empty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				134
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is empty": true
+				}
+			]
+		},
+		{
+			"id": "9c0f9eab-184b-4194-98b0-3df0a8d63b26",
+			"name": "get all maps",
+			"url": "https://localhost:7166/api/maps",
+			"time": 138,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is not empty": true,
+				"Response body contains array of maps": true,
+				"Each map in the maps contains valid properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains array of maps": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each map in the maps contains valid properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				138
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is not empty": true,
+					"Response body contains array of maps": true,
+					"Each map in the maps contains valid properties": true
+				}
+			]
+		},
+		{
+			"id": "07097e9a-0301-49bf-a5a7-b369c2b78e3a",
+			"name": "get square maps",
+			"url": "https://localhost:7166/api/maps/square",
+			"time": 129,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is not empty": true,
+				"Response body contains array of maps": true,
+				"Each map in the maps contains valid properties": true,
+				"Each map in the maps are square": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains array of maps": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each map in the maps contains valid properties": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each map in the maps are square": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				129
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is not empty": true,
+					"Response body contains array of maps": true,
+					"Each map in the maps contains valid properties": true,
+					"Each map in the maps are square": true
+				}
+			]
+		},
+		{
+			"id": "6db66501-82a6-4285-87a9-6234d1b9de89",
+			"name": "get map by id",
+			"url": "https://localhost:7166/api/maps/2",
+			"time": 136,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is not empty": true,
+				"Response body contains array of maps": true,
+				"Each map in the maps contains valid properties": true,
+				"The id of the map is the same as the one requested": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains array of maps": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each map in the maps contains valid properties": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The id of the map is the same as the one requested": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				136
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is not empty": true,
+					"Response body contains array of maps": true,
+					"Each map in the maps contains valid properties": true,
+					"The id of the map is the same as the one requested": true
+				}
+			]
+		},
+		{
+			"id": "bdf9e02b-e8eb-4679-97e4-b0658f2ec91a",
+			"name": "are coordinates on map by id",
+			"url": "https://localhost:7166/api/maps/2/3-4",
+			"time": 130,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Is (3,4) on the given map": true
+			},
+			"testPassFailCounts": {
+				"Is (3,4) on the given map": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				130
+			],
+			"allTests": [
+				{
+					"Is (3,4) on the given map": true
+				}
+			]
+		},
+		{
+			"id": "a826e054-2f3e-428f-a637-c970d9ca657a",
+			"name": "add new map",
+			"url": "https://localhost:7166/api/maps",
+			"time": 138,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response body is not empty": true,
+				"Response body contains array of maps": true,
+				"Response map contains all necessary fields": true,
+				"The new map contains the correct information": true,
+				"Check a newly created resource URL to be in the Location HTTP header": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains array of maps": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response map contains all necessary fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The new map contains the correct information": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check a newly created resource URL to be in the Location HTTP header": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				138
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response body is not empty": true,
+					"Response body contains array of maps": true,
+					"Response map contains all necessary fields": true,
+					"The new map contains the correct information": true,
+					"Check a newly created resource URL to be in the Location HTTP header": true
+				}
+			]
+		},
+		{
+			"id": "76a7d77c-a905-4573-aa1c-59fcd5cc774e",
+			"name": "update map by id",
+			"url": "https://localhost:7166/api/maps/6",
+			"time": 137,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				137
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "38d53dfa-9c46-4b9e-b3f5-a8d8bd8fc8dc",
+			"name": "delete map",
+			"url": "https://localhost:7166/api/maps/21",
+			"time": 135,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is empty": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is empty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				135
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is empty": true
+				}
+			]
+		},
+		{
+			"id": "f5c537c7-e944-4f1d-b880-fc5e39d3c0c4",
+			"name": "get all users",
+			"url": "https://localhost:7166/api/users",
+			"time": 134,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is not empty": true,
+				"Response body contains array of users": true,
+				"Each user in users contains valid properties": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains array of users": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each user in users contains valid properties": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				134
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is not empty": true,
+					"Response body contains array of users": true,
+					"Each user in users contains valid properties": true
+				}
+			]
+		},
+		{
+			"id": "06180c41-65ce-444c-af62-f84d26d5eb57",
+			"name": "get all admins",
+			"url": "https://localhost:7166/api/users/admin",
+			"time": 139,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is not empty": true,
+				"Response body contains array of users": true,
+				"Each user in users contains valid properties": true,
+				"Each user in users is an admin": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains array of users": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each user in users contains valid properties": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each user in users is an admin": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				139
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is not empty": true,
+					"Response body contains array of users": true,
+					"Each user in users contains valid properties": true,
+					"Each user in users is an admin": true
+				}
+			]
+		},
+		{
+			"id": "3f2e6308-4b11-4e1f-a9f3-f67214d13df9",
+			"name": "get user by id",
+			"url": "https://localhost:7166/api/users/2",
+			"time": 130,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is not empty": true,
+				"Response body contains array of users": true,
+				"Each user in users contains valid properties": true,
+				"The id of the user is the same as the one requested": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains array of users": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each user in users contains valid properties": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The id of the user is the same as the one requested": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				130
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is not empty": true,
+					"Response body contains array of users": true,
+					"Each user in users contains valid properties": true,
+					"The id of the user is the same as the one requested": true
+				}
+			]
+		},
+		{
+			"id": "a247ebc6-05e7-4786-b802-c6902366669d",
+			"name": "add new user",
+			"url": "https://localhost:7166/api/users",
+			"time": 272,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response body is not empty": true,
+				"Response body contains array of maps": true,
+				"Response user contains all necessary fields": true,
+				"The new user contains the correct information": true,
+				"Check a newly created resource URL to be in the Location HTTP header": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains array of maps": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response user contains all necessary fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The new user contains the correct information": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check a newly created resource URL to be in the Location HTTP header": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				272
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response body is not empty": true,
+					"Response body contains array of maps": true,
+					"Response user contains all necessary fields": true,
+					"The new user contains the correct information": true,
+					"Check a newly created resource URL to be in the Location HTTP header": true
+				}
+			]
+		},
+		{
+			"id": "087cb063-beb3-4d62-bb60-98a791bfe6cb",
+			"name": "update user by id",
+			"url": "https://localhost:7166/api/users/15",
+			"time": 134,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				134
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "0a972ebf-f971-483c-bb81-ca54427e479d",
+			"name": "delete user",
+			"url": "https://localhost:7166/api/users/21",
+			"time": 134,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response body is empty": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body is empty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				134
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response body is empty": true
+				}
+			]
+		},
+		{
+			"id": "38ebc2cd-ebe7-4068-8a5a-bb691e0732b6",
+			"name": "update user login",
+			"url": "https://localhost:7166/api/users/15",
+			"time": 262,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				262
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2964,
+	"collection": {
+		"requests": [
+			{
+				"id": "7dd92bb3-e556-4566-8daf-1a7c9af1b812",
+				"method": "GET"
+			},
+			{
+				"id": "f63fb77f-9fb9-4d62-848a-3bc911d81b39",
+				"method": "GET"
+			},
+			{
+				"id": "9576233e-7175-48b9-9254-52135abb9a8e",
+				"method": "GET"
+			},
+			{
+				"id": "42ac01cb-b47a-44f2-ba33-460ec9e0ff1f",
+				"method": "POST"
+			},
+			{
+				"id": "ae740656-8fcd-4f29-b7f4-437ae0a056c1",
+				"method": "PUT"
+			},
+			{
+				"id": "9e0aba41-9fb3-4543-8bbb-679d6cb047e7",
+				"method": "DELETE"
+			},
+			{
+				"id": "9c0f9eab-184b-4194-98b0-3df0a8d63b26",
+				"method": "GET"
+			},
+			{
+				"id": "07097e9a-0301-49bf-a5a7-b369c2b78e3a",
+				"method": "GET"
+			},
+			{
+				"id": "6db66501-82a6-4285-87a9-6234d1b9de89",
+				"method": "GET"
+			},
+			{
+				"id": "bdf9e02b-e8eb-4679-97e4-b0658f2ec91a",
+				"method": "GET"
+			},
+			{
+				"id": "a826e054-2f3e-428f-a637-c970d9ca657a",
+				"method": "POST"
+			},
+			{
+				"id": "76a7d77c-a905-4573-aa1c-59fcd5cc774e",
+				"method": "PUT"
+			},
+			{
+				"id": "38d53dfa-9c46-4b9e-b3f5-a8d8bd8fc8dc",
+				"method": "DELETE"
+			},
+			{
+				"id": "f5c537c7-e944-4f1d-b880-fc5e39d3c0c4",
+				"method": "GET"
+			},
+			{
+				"id": "06180c41-65ce-444c-af62-f84d26d5eb57",
+				"method": "GET"
+			},
+			{
+				"id": "3f2e6308-4b11-4e1f-a9f3-f67214d13df9",
+				"method": "GET"
+			},
+			{
+				"id": "a247ebc6-05e7-4786-b802-c6902366669d",
+				"method": "POST"
+			},
+			{
+				"id": "087cb063-beb3-4d62-bb60-98a791bfe6cb",
+				"method": "PUT"
+			},
+			{
+				"id": "0a972ebf-f971-483c-bb81-ca54427e479d",
+				"method": "DELETE"
+			},
+			{
+				"id": "38ebc2cd-ebe7-4068-8a5a-bb691e0732b6",
+				"method": "PATCH"
+			}
+		]
+	}
+}
